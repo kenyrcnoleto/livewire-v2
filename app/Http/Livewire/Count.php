@@ -23,6 +23,12 @@ class Count extends Component
         ]);
     }
 
+    public function send()
+    {
+
+        $this->emitTo(Todo::class, 'mudaai',  $this->name);
+
+    }
     //todo método público consegue utilizar no front
 
     //pode passar paramentros do front

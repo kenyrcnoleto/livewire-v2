@@ -12,6 +12,8 @@
         
         <x-primary-button wire:click="submit">CREATE A NEW USER</x-prmary-button>
 
+        <x-primary-button wire:click="send">SEND TO TODO</x-prmary-button>
+
     </div>
 
     <div>
