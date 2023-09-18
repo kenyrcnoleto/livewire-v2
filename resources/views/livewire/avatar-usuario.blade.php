@@ -1,5 +1,8 @@
 <div>
     
+    <x-secondary-button wire:click="download">  
+        Download
+    </x-secondary-button>
 
     <form wire:submit.prevent="save">
     <div>
