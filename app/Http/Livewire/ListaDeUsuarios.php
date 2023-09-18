@@ -4,19 +4,27 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 
 class ListaDeUsuarios extends Component
 {
 
-   
+   public ?string $search = null;
+
     protected $listeners = [
         'users::updated' => '$refresh'
+    ];
+
+    protected $queryString = [
+        'search' => ['except' => '']
     ];
 
     public function render()
     {
         return view('livewire.lista-de-usuarios', [
-            'users' => User::all(),
+            'users' => User::query()
+                ->when($this->search, fn(Builder $q) => $q->where('name', 'like', '%' . $this->search . '%'))
+                ->get()
         ]);
     }
 
