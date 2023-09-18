@@ -16,7 +16,7 @@ class ListaDeUsuarios extends Component
     ];
 
     protected $queryString = [
-        'search' => ['except' => '']
+        'search' => ['except' => '', 'as' => 'q']
     ];
 
     public function render()
