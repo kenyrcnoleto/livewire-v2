@@ -45,13 +45,13 @@ class ListaDeUsuarios extends Component
                 ->when($this->searchEmail, fn(Builder $q) => $q->where('email', 'like', '%' . $this->searchEmail . '%'))
                 ->when($this->sortBy, fn(Builder $q) => $q->orderBy($this->sortBy, $this->sortDir))
                 ->paginate($this->limit)
-        ]);
+        ])->layout('layouts.app',['header' => __('Users')]);
     }
 
     public function sort($column)
     {
         $this->sortDir = $this->sortBy == $column
-            ? ($this->sortDir = $this->sortDir == 'asc' ? 'desc' : 'asc')
+            ? ($this->sortDir = $this->sortDir == 'asc' ? 'desc' : 'asc') //togle direcition
             : 'asc';
         
         // if($this->sortBy == $column) {

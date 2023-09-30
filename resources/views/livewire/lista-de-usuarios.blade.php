@@ -1,7 +1,6 @@
 <div>
-    <h1>Users</h1>
-
-    <div class="my-4">
+   
+    <div class="mb-4">
         <x-text-input wire:model="search" placeholder="search..." />
         <x-text-input wire:model="searchEmail" placeholders="Email Search..." />
         <select  wire:model="limit">
