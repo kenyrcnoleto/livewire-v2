@@ -17,7 +17,7 @@ use App\Http\Livewire\ListaDeUsuarios;
 */
 
 Route::get('/', function () {
-    Auth::loginUsingId(1);
+    Auth::loginUsingId(2);
     return view('welcome');
 });
 

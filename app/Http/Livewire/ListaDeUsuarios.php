@@ -6,11 +6,13 @@ use Livewire\Component;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\WithPagination;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ListaDeUsuarios extends Component
 {
 
     use WithPagination;
+    use AuthorizesRequests;
 
     public ?int $limit = 5;
 
@@ -32,6 +34,10 @@ class ListaDeUsuarios extends Component
 
     ];
 
+    public function mount()
+    {
+        $this->authorize('users::list');
+    }
     public function updating()
     {
         $this->resetPage();
@@ -39,6 +45,8 @@ class ListaDeUsuarios extends Component
 
     public function render()
     {
+        
+
         return view('livewire.lista-de-usuarios', [
             'users' => User::query()
                 ->when($this->search, fn(Builder $q) => $q->where('name', 'like', '%' . $this->search . '%'))
