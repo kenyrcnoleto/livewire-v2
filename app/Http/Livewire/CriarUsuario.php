@@ -41,6 +41,7 @@ class CriarUsuario extends Component
 
     public function save()
     {
+        sleep(2);
         $this->validate();
         if($this->name == 'teste') {
             
