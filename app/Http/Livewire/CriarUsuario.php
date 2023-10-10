@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\User;
 use App\Rules\CustomRule;
 
 class CriarUsuario extends Component
@@ -47,6 +48,14 @@ class CriarUsuario extends Component
             //ray($this->getErrorBag()->get('name'));
         } 
 
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => 'qualquer-coisa'
+        ]);
+
+        $this->emit('user::created');
+        $this->reset('name', 'email');
 
        // ray('oi');
     }
